@@ -5,12 +5,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "customers")
-
 public class Customer implements Serializable {
 
     @Id
     @Column (name = "customerId")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "Name")
@@ -31,7 +30,12 @@ public class Customer implements Serializable {
     @Column(name = "WebPage")
     private String webPage;
 
-    public Customer() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

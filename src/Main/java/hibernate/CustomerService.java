@@ -24,7 +24,7 @@ public class CustomerService {
             customer.setAddress("Office address");
             customer.setRegNumber(123456);
             customer.setPhone("+37126159734");
-            customer.setMail("aigars@lvparts.lv");
+            customer.setMail("sales@lvparts.lv");
             customer.setWebPage("lvparts.lv");
             session.save(customer);
             transaction.commit();
@@ -40,15 +40,16 @@ public class CustomerService {
             Session session = DBConfig.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Customer customer = new Customer();
-//            safeCustomer(customer);
-            session.save(customer);
+            customer.setName("");
+            safeCustomer(customer);
             transaction.commit();
         } catch (Exception e){
+            e.printStackTrace();
             System.out.println("Can't create customer");
         }
     }
 
-    public static Customer customerById(int byId) {
+    public Customer customerById(int byId) {
         Session session = DBConfig.getSessionFactory().openSession();
         Customer customer = (Customer) session.get(Customer.class, byId);
         session.close();

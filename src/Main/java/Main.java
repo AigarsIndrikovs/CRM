@@ -18,9 +18,10 @@ public class Main  { //extends Application
 
         CustomerService customerService = new CustomerService();
 //        customerService.createCustomer();
+//        customerService.safeCustomer(customerService.customerById(2));
 
-        Customer customer = customerService.customerById(1);
-        System.out.println(customer.toString());
+        //Customer customer = customerService.customerById(2);
+        //System.out.println(customer.toString());
 
     }
 }
