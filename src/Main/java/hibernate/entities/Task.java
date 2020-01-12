@@ -1,4 +1,4 @@
 package hibernate.entities;
 
-public class Events {
+public class Task {
 }

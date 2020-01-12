@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable {
+public class Customer implements Serializable  {
 
     @Id
     @Column (name = "customerId")
@@ -30,6 +30,8 @@ public class Customer implements Serializable {
     @Column(name = "WebPage")
     private String webPage;
 
+    @Column(name = "ContactPerson")
+    private String contactPerson;
 
     public int getId() {
         return id;
@@ -87,6 +89,14 @@ public class Customer implements Serializable {
         this.webPage = webPage;
     }
 
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -97,6 +107,7 @@ public class Customer implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", mail='" + mail + '\'' +
                 ", webPage='" + webPage + '\'' +
+                ", contactPerson='" + contactPerson + '\'' +
                 '}';
     }
 }

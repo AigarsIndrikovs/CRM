@@ -12,8 +12,6 @@ import java.util.List;
 
 public class CustomerService {
 
-    private Session session;
-
     public CustomerService() {
     }
 
@@ -29,8 +27,10 @@ public class CustomerService {
             customer.setPhone("+37126159734");
             customer.setMail("sales@lvparts.lv");
             customer.setWebPage("lvparts.lv");
+            customer.setContactPerson("Aigars Indrikovs");
             session.update(customer);
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Can't save customer");
@@ -45,6 +45,7 @@ public class CustomerService {
             Customer customer = new Customer();
             session.save(customer);
             transaction.commit();
+            session.close();
         } catch (Exception e){
             e.printStackTrace();
             System.out.println("Can't create customer");
@@ -59,7 +60,7 @@ public class CustomerService {
     }
 
     public List<Customer> getAllCustomers() {
-        List<Customer> allCustomers = new ArrayList<Customer>();
+        List<Customer> allCustomers;
         Session session = DBConfig.getSessionFactory().openSession();
         allCustomers = session.createQuery("from Customer", Customer.class).getResultList();
         session.close();
@@ -74,6 +75,7 @@ public class CustomerService {
             Customer customer = getCustomerById(id);
             session.delete(customer);
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Can't delete customer");

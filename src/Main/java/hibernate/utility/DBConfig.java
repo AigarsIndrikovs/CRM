@@ -28,7 +28,7 @@ public class DBConfig {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(hibernate.entities.Customer.class);
-                //configuration.addAnnotatedClass(hibernate.entities.Events.class);
+                configuration.addAnnotatedClass(hibernate.entities.Event.class);
                 //configuration.addAnnotatedClass(hibernate.entities.Tasks.class);
 
                 ServiceRegistry serviceRegistry = (ServiceRegistry) new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
