@@ -68,10 +68,10 @@ public class Main extends Application {
 
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(menuDropdown);
-        menuTaskBar.getChildren().addAll(menuBar);
+
 
         ////////
-        /*HBox createTaskBar = new HBox();
+
         Menu createDropdownMenu = new Menu("Create");
 
         CustomMenuButton createCustomersButton = new CustomMenuButton("Customers");
@@ -93,9 +93,9 @@ public class Main extends Application {
         createDropdownMenu.getItems().add(createMenuItem3);
 
         MenuBar createBar = new MenuBar();
-        createBar.getMenus().add(menuDropdown);
-        createTaskBar.getChildren().addAll(createBar);*/
+        createBar.getMenus().add(createDropdownMenu);
 
+        menuTaskBar.getChildren().addAll(menuBar, createBar);
         Scene scene = new Scene(menuTaskBar, width, height);
         return scene;
     }
