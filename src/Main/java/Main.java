@@ -1,5 +1,5 @@
-import hibernate.CustomerService;
 import hibernate.entities.Customer;
+import hibernate.services.CustomerService;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.CustomMenuItem;
@@ -8,10 +8,11 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class Main extends Application {
+public abstract class Main extends Application {
 
+    /*
     public void start(Stage primaryStage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene scene = setupUI(500, 300);
@@ -21,16 +22,25 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    /*public static void main(String[] args) {
+    */
+    public static void main(String[] args) {
 
         CustomerService customerService = new CustomerService();
+//        Customer costumer = customerService.getCustomerById(2);
+//        customerService.safeCustomer(costumer);
+//        System.out.println(costumer.toString());
 //        customerService.createCustomer();
-//        customerService.safeCustomer(customerService.customerById(2));
+//        customerService.updateCustomer(15);
+//        customerService.deleteCustomerById(16);
+        List allCustomers = customerService.getAllCustomers();
+        for (int i = 0; i < allCustomers.size(); i++) {
+            System.out.println(allCustomers.get(i).toString());
+        }
 
-        //Customer customer = customerService.customerById(2);
-        //System.out.println(customer.toString());
 
-    }*/
+    }
+
+    /*
 
     private Scene setupUI(int width, int height) {
         HBox menuTaskBar = new HBox();
@@ -100,5 +110,5 @@ public class Main extends Application {
         Scene scene = new Scene(menuTaskBar, width, height);
         return scene;
     }
-
+*/
 }

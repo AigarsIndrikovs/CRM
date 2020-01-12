@@ -30,6 +30,7 @@ public class Customer implements Serializable {
     @Column(name = "WebPage")
     private String webPage;
 
+
     public int getId() {
         return id;
     }

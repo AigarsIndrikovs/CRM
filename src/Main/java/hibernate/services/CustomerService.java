@@ -1,4 +1,4 @@
-package hibernate;
+package hibernate.services;
 
 import hibernate.entities.Customer;
 import hibernate.utility.DBConfig;
@@ -7,26 +7,29 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerService {
 
     private Session session;
 
     public CustomerService() {
-        session = DBConfig.getSessionFactory().openSession();
     }
-    public void safeCustomer(Customer customer) {
+
+    public void updateCustomer(int id) {
         Transaction transaction = null;
         try {
             Session session = DBConfig.getSessionFactory().openSession();
             transaction = session.beginTransaction();
+            Customer customer = getCustomerById(id);
             customer.setName("LVPARTS SIA");
             customer.setAddress("Office address");
             customer.setRegNumber(123456);
             customer.setPhone("+37126159734");
             customer.setMail("sales@lvparts.lv");
             customer.setWebPage("lvparts.lv");
-            session.save(customer);
+            session.update(customer);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,8 +43,7 @@ public class CustomerService {
             Session session = DBConfig.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Customer customer = new Customer();
-            customer.setName("");
-            safeCustomer(customer);
+            session.save(customer);
             transaction.commit();
         } catch (Exception e){
             e.printStackTrace();
@@ -49,12 +51,33 @@ public class CustomerService {
         }
     }
 
-    public Customer customerById(int byId) {
+    public Customer getCustomerById(int byId) {
         Session session = DBConfig.getSessionFactory().openSession();
-        Customer customer = (Customer) session.get(Customer.class, byId);
+        Customer customer = session.get(Customer.class, byId);
         session.close();
         return  customer;
     }
 
+    public List<Customer> getAllCustomers() {
+        List<Customer> allCustomers = new ArrayList<Customer>();
+        Session session = DBConfig.getSessionFactory().openSession();
+        allCustomers = session.createQuery("from Customer", Customer.class).getResultList();
+        session.close();
+        return allCustomers;
+    }
+
+    public void deleteCustomerById(int id) {
+        Transaction transaction = null;
+        try {
+            Session session = DBConfig.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Customer customer = getCustomerById(id);
+            session.delete(customer);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Can't delete customer");
+        }
+    }
 
 }
