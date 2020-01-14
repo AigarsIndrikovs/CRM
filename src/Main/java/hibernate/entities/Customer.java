@@ -3,9 +3,10 @@ package hibernate.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable  {
+public class Customer implements Serializable {
 
     @Id
     @Column (name = "customerId")

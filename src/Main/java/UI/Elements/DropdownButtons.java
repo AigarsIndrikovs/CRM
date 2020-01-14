@@ -1,18 +1,27 @@
 package UI.Elements;
 
+import UI.DisplayedScene;
+import UI.Layouts.CustomersScreenLayout;
+import UI.Layouts.HomeScreenLayout;
+import hibernate.services.CustomerService;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.CustomMenuItem;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.SkinBase;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class DropdownButtons {
 
+    public static Button customerListButton;
+    public static Button createCustomer;
+    private static Object Node;
+
     public static HBox showMainButtons() {
 
         HBox mainButtons = new HBox();
+        final CustomerService customerService = new CustomerService();
 
         Menu menuDropdown = new Menu("Menu");
 
@@ -22,11 +31,21 @@ public class DropdownButtons {
         customMenuItem.setHideOnClick(false);
         menuDropdown.getItems().add(customMenuItem);
 
-        CustomMenuButton menuCustomersButton = new CustomMenuButton("Customers");
+        customerListButton = new CustomMenuButton("Customers");
         CustomMenuItem customMenuItem2 = new CustomMenuItem();
-        customMenuItem2.setContent(menuCustomersButton);
-        customMenuItem2.setHideOnClick(false);
+        customMenuItem2.setContent(customerListButton);
+        customMenuItem2.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem2);
+        customerListButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = new Stage();
+                stage.setTitle("Customer list");
+                stage.setScene(CustomersScreenLayout.customerPage(900, 600));
+                System.out.println("Clicked");
+                DisplayedScene.copyStage(stage);
+            }
+        });
 
         CustomMenuButton menuContactsButton = new CustomMenuButton("Contacts");
         CustomMenuItem customMenuItem3 = new CustomMenuItem();
@@ -54,11 +73,12 @@ public class DropdownButtons {
 
         Menu createDropdownMenu = new Menu("Create");
 
-        CustomMenuButton createCustomersButton = new CustomMenuButton("Customers");
+        createCustomer = new Button("Create customer");
         CustomMenuItem createMenuItem = new CustomMenuItem();
-        createMenuItem.setContent(createCustomersButton);
-        createMenuItem.setHideOnClick(false);
+        createMenuItem.setContent(createCustomer);
+        createMenuItem.setHideOnClick(true);
         createDropdownMenu.getItems().add(createMenuItem);
+
 
         CustomMenuButton createEventsButton = new CustomMenuButton("Events");
         CustomMenuItem createMenuItem2 = new CustomMenuItem();

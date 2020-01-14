@@ -2,6 +2,7 @@ package UI.Layouts;
 
 import hibernate.entities.Customer;
 import UI.Elements.DropdownButtons;
+import hibernate.services.CustomerService;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -9,10 +10,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
 
 
 public class CustomersScreenLayout {
     public static Scene customerPage(int width, int height) {
+        CustomerService customerService = new CustomerService();
+        List<Customer> allCustomers = customerService.getAllCustomers();
         VBox mainLayout = new VBox();
         HBox screen = DropdownButtons.showMainButtons();
         TableView customerTableView = new TableView();
@@ -43,7 +47,7 @@ public class CustomersScreenLayout {
 
         customerTableView.getColumns().addAll(columnId, columnName, columnAddress, columnRegistrationNumber, columnPhone, columnEmail, columnWebPage, columnContactPerson);
 
-      //  customerTableView.getItems().add(new Customer("Name", "Latvia, Riga, terbatas street", "123123123", "Pole Dancing", "www.something.com"));
+        customerTableView.getItems().addAll(allCustomers);
 
         mainLayout.getChildren().addAll(screen, customerTableView);
         return new Scene(mainLayout, width, height);
