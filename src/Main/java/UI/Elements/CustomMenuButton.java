@@ -1,3 +1,5 @@
+package UI.Elements;
+
 import javafx.scene.control.Button;
 
 public class CustomMenuButton extends Button {
