@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CRM" target="1.5" />
+      <module name="CRM" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>

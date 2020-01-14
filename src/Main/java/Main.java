@@ -1,4 +1,5 @@
 
+import UI.Layouts.CustomersScreenLayout;
 import UI.Layouts.HomeScreenLayout;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 //        Parent root = FXMLLoader.load(getClass().getResource("src/Main/java/sample.fxml"));
-        Scene scene = HomeScreenLayout.homepage(500, 300);
+        Scene scene = CustomersScreenLayout.customerPage(500, 300);
         primaryStage.setTitle("CRM");
         primaryStage.setScene(scene);
         primaryStage.show();
