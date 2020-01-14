@@ -39,10 +39,10 @@ public abstract class Main extends Application {
 //        for (int i = 0; i < allCustomers.size(); i++) {
 //            System.out.println(allCustomers.get(i).toString());
 //        eventService.createEvent();
-        eventService.updateEvent(1, costumer);
-        Event event = eventService.getEventById(1);
-        System.out.println(event.toString());
-        }
+//        eventService.updateEvent(1, costumer);
+//        Event event = eventService.getEventById(1);
+//        System.out.println(event.toString());
+//        }
 
 
 
@@ -118,4 +118,5 @@ public abstract class Main extends Application {
         return scene;
     }
 */
+    }
 }
