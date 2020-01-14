@@ -4,11 +4,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.SkinBase;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class DropdownButtons {
 
+    public static HBox showMainButtons() {
+
+        HBox mainButtons = new HBox();
 
         Menu menuDropdown = new Menu("Menu");
 
@@ -71,8 +75,10 @@ public class DropdownButtons {
         MenuBar createBar = new MenuBar();
         createBar.getMenus().add(createDropdownMenu);
 
-        menuTaskBar.getChildren().addAll(menuBar, createBar);
-        Scene scene = new Scene(menuTaskBar, width, height);
-        return scene;
+        mainButtons.getChildren().addAll(menuBar, createBar);
+
+        return mainButtons;
     }
+
+
 }
