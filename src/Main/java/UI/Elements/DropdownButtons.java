@@ -1,13 +1,11 @@
 package UI.Elements;
 
-import UI.DisplayedScene;
+import UI.Display;
 import UI.Layouts.CustomersScreenLayout;
 import UI.Layouts.HomeScreenLayout;
 import hibernate.services.CustomerService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -28,10 +26,16 @@ public class DropdownButtons {
         CustomMenuButton menuHomeButton = new CustomMenuButton("Home");
         CustomMenuItem customMenuItem = new CustomMenuItem();
         customMenuItem.setContent(menuHomeButton);
-        customMenuItem.setHideOnClick(false);
+        customMenuItem.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem);
+        menuHomeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Display.showDisplay(HomeScreenLayout.homepage());
+            }
+        });
 
-        customerListButton = new CustomMenuButton("Customers");
+        CustomMenuButton customerListButton = new CustomMenuButton("Customers");
         CustomMenuItem customMenuItem2 = new CustomMenuItem();
         customMenuItem2.setContent(customerListButton);
         customMenuItem2.setHideOnClick(true);
@@ -39,11 +43,7 @@ public class DropdownButtons {
         customerListButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Stage stage = new Stage();
-                stage.setTitle("Customer list");
-                stage.setScene(CustomersScreenLayout.customerPage(900, 600));
-                System.out.println("Clicked");
-                DisplayedScene.copyStage(stage);
+                Display.showDisplay(HomeScreenLayout.customerList());
             }
         });
 

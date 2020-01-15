@@ -1,30 +1,20 @@
 
-import UI.DisplayedScene;
+import UI.Display;
 import UI.Layouts.HomeScreenLayout;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends DisplayedScene {
+public class Main extends Application {
 
-    Stage window;
 
-//    @Override
-//    public void start(Stage primaryStage) throws Exception{
-//        DisplayedScene.setUIStage(HomeScreenLayout.homepage(400,300));
-//        window = DisplayedScene.getUIStage();
-////        Scene scene = HomeScreenLayout.homepage(600,400);
-//        window.setTitle("CRM");
-////        primaryStage.setScene(scene);
-//        window.show();
-//
-//
-//    }
+    @Override
+    public void start(Stage primaryStage) {
+        Display.showDisplay(HomeScreenLayout.homepage());
+    }
 
 
     public static void main(String[] args) {
-
-        DisplayedScene.launch(args);
+        launch(args);
     }
 
 
