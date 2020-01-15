@@ -43,6 +43,7 @@ public class EventService {
             transaction = session.beginTransaction();
             Event event = getEventById(id);
             event.setCustomer(customer);
+            event.setCustomerName(customer);
             event.setDate("10.01.2020");
             event.setContactPerson("CEO and marketing manager");
             event.setEventDescription("Discussed pricing and marketing support. Customer need additional catalogues and leaflets");

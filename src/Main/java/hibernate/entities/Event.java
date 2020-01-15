@@ -21,8 +21,11 @@ public class Event implements Serializable {
     @JoinColumn(name = "Customer")
     private Customer customer;
 
+    @Column(name = "CustomerName")
+    private String customerName;
+
     @Column(name = "Date")
-    private Date date;
+    private String date;
 
     @Column(name = "ContactPerson")
     private String contactPerson;
@@ -50,13 +53,19 @@ public class Event implements Serializable {
         this.customer = customer;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(String string) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.YYYY", Locale.ENGLISH);
-        Date date = format.parse(string);
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(Customer customer) {
+        this.customerName = customer.getName();
+    }
+
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Display {
 
   private static final Stage stage = new Stage();
-  private  static String title = "CRM system";
+  private static String title = "CRM system";
 
     public static void showDisplay(Scene scene) {
         stage.setTitle(title);

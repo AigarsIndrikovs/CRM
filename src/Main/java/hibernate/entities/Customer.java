@@ -20,7 +20,7 @@ public class Customer implements Serializable {
     private String address;
 
     @Column(name = "RegistrationNumber")
-    private int regNumber;
+    private String regNumber;
 
     @Column(name = "Phone")
     private String phone;
@@ -58,11 +58,11 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    public int getRegNumber() {
+    public String getRegNumber() {
         return regNumber;
     }
 
-    public void setRegNumber(int regNumber) {
+    public void setRegNumber(String regNumber) {
         this.regNumber = regNumber;
     }
 
@@ -98,17 +98,4 @@ public class Customer implements Serializable {
         this.contactPerson = contactPerson;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", regNumber=" + regNumber +
-                ", phone='" + phone + '\'' +
-                ", mail='" + mail + '\'' +
-                ", webPage='" + webPage + '\'' +
-                ", contactPerson='" + contactPerson + '\'' +
-                '}';
-    }
 }

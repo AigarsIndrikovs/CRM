@@ -14,7 +14,6 @@ import java.util.List;
 
 public class EventScreenLayout {
 
-
     Scene eventPageScene;
 
     public Scene getEventPageScene() {
@@ -30,13 +29,13 @@ public class EventScreenLayout {
         List<Event> allEvents = eventService.getAllEvents();
         VBox mainLayout = new VBox();
         HBox screen = DropdownButtons.showMainButtons();
-        TableView eventTableview = new TableView();
+        TableView eventTableView = new TableView();
 
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableColumn<Object, Object> columnCustomer = new TableColumn<>("Customer");
-        columnCustomer.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        columnCustomer.setCellValueFactory(new PropertyValueFactory<>("customerName"));
 
         TableColumn<Object, Object> columnDate = new TableColumn<>("Date");
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -45,17 +44,19 @@ public class EventScreenLayout {
         columnContactPerson.setCellValueFactory(new PropertyValueFactory<>("contactPerson"));
 
         TableColumn<Object, Object> columnEventDescription = new TableColumn<>("Description");
+        columnEventDescription.setMaxWidth(300);
         columnEventDescription.setCellValueFactory(new PropertyValueFactory<>("eventDescription"));
 
         TableColumn<Object, Object> columnEventResult = new TableColumn<>("Result");
+        columnEventDescription.setMaxWidth(200);
         columnEventResult.setCellValueFactory(new PropertyValueFactory<>("eventResult"));
 
 
-        eventTableview.getColumns().addAll(columnId, columnCustomer, columnDate, columnContactPerson, columnEventDescription, columnEventResult);
+        eventTableView.getColumns().addAll(columnId, columnCustomer, columnDate, columnContactPerson, columnEventDescription, columnEventResult);
 
-        // customerTableView.getItems().addAll(allCustomers);
+         eventTableView.getItems().addAll(allEvents);
 
-        mainLayout.getChildren().addAll(screen, eventTableview);
+        mainLayout.getChildren().addAll(screen, eventTableView);
         return new Scene(mainLayout, width, height);
     }
 

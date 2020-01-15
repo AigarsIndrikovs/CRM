@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Display.showDisplay(CreateEventScreenLayout.CreateEventScreen(900, 600));
+        Display.showDisplay(HomeScreenLayout.homepage());
     }
 
 
