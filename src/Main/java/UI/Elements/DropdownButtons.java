@@ -35,21 +35,21 @@ public class DropdownButtons {
         customMenuItem2.setContent(customerListButton);
         customMenuItem2.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem2);
-        customerListButton.setOnAction(event -> Display.showDisplay(CustomersScreenLayout.customerPage(900,600)));
+        customerListButton.setOnAction(event -> Display.showDisplay(CustomersScreenLayout.customerPage()));
 
         CustomMenuButton menuEventsButton = new CustomMenuButton("Events");
         CustomMenuItem customMenuItem4 = new CustomMenuItem();
         customMenuItem4.setContent(menuEventsButton);
         customMenuItem4.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem4);
-        menuEventsButton.setOnAction(event -> Display.showDisplay(EventScreenLayout.eventPage(900,600)));
+        menuEventsButton.setOnAction(event -> Display.showDisplay(EventScreenLayout.eventPage()));
 
         CustomMenuButton menuTasksButton = new CustomMenuButton("Tasks");
         CustomMenuItem customMenuItem5 = new CustomMenuItem();
         customMenuItem5.setContent(menuTasksButton);
         customMenuItem5.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem5);
-        menuTasksButton.setOnAction(event -> Display.showDisplay(TaskScreenLayout.taskPage(900,600)));
+        menuTasksButton.setOnAction(event -> Display.showDisplay(TaskScreenLayout.taskPage()));
 
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(menuDropdown);
@@ -66,7 +66,7 @@ public class DropdownButtons {
         createDropdownMenu.getItems().add(createMenuItem);
         createCustomer.setOnAction(event -> {
             Customer customer = customerService.createCustomer();
-            Display.showDisplay(CreateCustomerScreenLayout.CreateCustomerScreen(900,600, customer));
+            Display.showDisplay(CreateCustomerScreenLayout.CreateCustomerScreen(customer));
         });
 
 

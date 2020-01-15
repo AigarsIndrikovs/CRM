@@ -1,5 +1,6 @@
 package UI.Layouts;
 
+import UI.Display;
 import UI.Elements.CreateLayoutCustomLabel;
 import UI.Elements.DropdownButtons;
 import javafx.geometry.Insets;
@@ -12,7 +13,7 @@ import javafx.scene.paint.Color;
 
 public class CreateEventScreenLayout {
 
-    public static Scene CreateEventScreen(int width, int height) {
+    public static Scene CreateEventScreen() {
 
         VBox mainLayout = new VBox();
         mainLayout.setPadding(new Insets(10, 10, 10, 10));
@@ -62,7 +63,7 @@ public class CreateEventScreenLayout {
         createCustomerGridPane.add(resultTextField, 1, 4, 1, 1);
 
         mainLayout.getChildren().addAll(screen, createCustomerGridPane);
-        return new Scene(mainLayout, width, height);
+        return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 }
 

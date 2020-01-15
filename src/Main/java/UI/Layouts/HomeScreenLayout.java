@@ -16,16 +16,14 @@ import java.util.List;
 
 public class HomeScreenLayout extends Display {
 
-    private static int width = 900;
-    private static int height = 600;
-
 
     public static Scene homepage() {
         VBox mainLayout = new VBox();
         HBox screen = DropdownButtons.showMainButtons();
         Label label = new Label("Test text for VBox!");
         mainLayout.getChildren().addAll(screen, label);
-        return new Scene(mainLayout, width, height);
+
+        return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 
 }

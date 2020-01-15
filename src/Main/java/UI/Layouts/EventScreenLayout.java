@@ -1,5 +1,6 @@
 package UI.Layouts;
 
+import UI.Display;
 import UI.Elements.DropdownButtons;
 import hibernate.entities.Event;
 import hibernate.services.EventService;
@@ -14,17 +15,8 @@ import java.util.List;
 
 public class EventScreenLayout {
 
-    Scene eventPageScene;
 
-    public Scene getEventPageScene() {
-        return eventPageScene;
-    }
-
-    public void setEventPageScene(Scene eventPageScene) {
-        this.eventPageScene = eventPage(600, 600);
-    }
-
-    public static Scene eventPage(int width, int height) {
+    public static Scene eventPage() {
         EventService eventService = new EventService();
         List<Event> allEvents = eventService.getAllEvents();
         VBox mainLayout = new VBox();
@@ -57,7 +49,7 @@ public class EventScreenLayout {
          eventTableView.getItems().addAll(allEvents);
 
         mainLayout.getChildren().addAll(screen, eventTableView);
-        return new Scene(mainLayout, width, height);
+        return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 
 

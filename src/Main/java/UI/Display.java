@@ -9,11 +9,13 @@ import javafx.stage.Stage;
 public class Display {
 
   private static final Stage stage = new Stage();
-  private static String title = "CRM system";
+  public static final int WIDTH = 1024;
+  public static final int HEIGHT = 800;
 
     public static void showDisplay(Scene scene) {
-        stage.setTitle(title);
+        stage.setTitle("CRM");
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 
 public class CreateCustomerScreenLayout {
 
+
     private static TextField nameTextField;
     private static TextArea addressTextField;
     private static TextField regNumberTextField;
@@ -24,7 +25,7 @@ public class CreateCustomerScreenLayout {
     private static TextField webpageTextField;
     private static TextField contactTextField;
 
-    public static Scene CreateCustomerScreen(int width, int height, Customer customer) {
+    public static Scene CreateCustomerScreen(Customer customer) {
 
         final CustomerService customerService = new CustomerService();
 
@@ -86,11 +87,11 @@ public class CreateCustomerScreenLayout {
         Button saveButton = new Button();
         saveButton.setText("SAFE");
         saveButton.setOnAction(event -> {customerService.updateCustomer(customer.getId());
-            Display.showDisplay(CustomersScreenLayout.customerPage(900,600));
+            Display.showDisplay(CustomersScreenLayout.customerPage());
         });
 
         mainLayout.getChildren().addAll(screen, createCustomerGridPane, saveButton);
-        return new Scene(mainLayout, width, height);
+        return new Scene(mainLayout,Display.WIDTH, Display.HEIGHT);
     }
 
     public static TextField getNameTextField() {

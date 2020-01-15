@@ -1,6 +1,7 @@
 package UI.Layouts;
 
 
+import UI.Display;
 import UI.Elements.DropdownButtons;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -11,17 +12,8 @@ import javafx.scene.layout.VBox;
 
 public class TaskScreenLayout {
 
-    Scene taskPageScene;
 
-    public Scene getTaskPageScene() {
-        return taskPageScene;
-    }
-
-    public void setTaskPageScene(Scene taskPageScene) {
-        this.taskPageScene = taskPage(600, 600);
-    }
-
-    public static Scene taskPage(int width, int height) {
+    public static Scene taskPage() {
         // TaskService taskService = new TaskService();
         // List<Event> allTasks = eventService.getAllTasks();
         VBox mainLayout = new VBox();
@@ -43,7 +35,7 @@ public class TaskScreenLayout {
         // customerTableView.getItems().addAll(allCustomers);
 
         mainLayout.getChildren().addAll(screen, taskTableview);
-        return new Scene(mainLayout, width, height);
+        return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 
 
