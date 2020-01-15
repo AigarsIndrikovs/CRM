@@ -34,7 +34,6 @@ public class Event implements Serializable {
     private String eventResult;
 
 
-
     public int getId() {
         return id;
     }
