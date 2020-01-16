@@ -36,13 +36,13 @@ public class HomeScreenLayout extends Display {
         homScreenLogoPane.getChildren().addAll(new ImageView(companyLogo));
 
         CreateLayoutCustomLabel customerCount = new CreateLayoutCustomLabel("Customer count: ");
-        customerCount.setFont(Font.font(45));
+        customerCount.setFont(Font.font(50));
         CreateLayoutCustomLabel eventCount = new CreateLayoutCustomLabel("Event count: ");
-        eventCount.setFont(Font.font(45));
+        eventCount.setFont(Font.font(50));
         CreateLayoutCustomLabel activeTasks = new CreateLayoutCustomLabel("Active tasks: ");
-        activeTasks.setFont(Font.font(45));
+        activeTasks.setFont(Font.font(50));
         CreateLayoutCustomLabel finishedTasks = new CreateLayoutCustomLabel("Finished tasks: ");
-        finishedTasks.setFont(Font.font(45));
+        finishedTasks.setFont(Font.font(50));
 
         HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel("sdffsdfsdfsdf");
         HomeScreenInfoLabel eventCountInfo = new HomeScreenInfoLabel("sdffsdfsdffd");
