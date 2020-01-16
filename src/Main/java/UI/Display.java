@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Display {
 
   private static final Stage stage = new Stage();
-  public static final int WIDTH = 1024;
+  public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
     public static void showDisplay(Scene scene) {
