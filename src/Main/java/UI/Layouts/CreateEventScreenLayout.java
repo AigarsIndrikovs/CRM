@@ -3,9 +3,12 @@ package UI.Layouts;
 import UI.Display;
 import UI.Elements.CreateLayoutCustomLabel;
 import UI.Elements.DropdownButtons;
+import hibernate.entities.Event;
+import hibernate.services.EventService;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
@@ -13,7 +16,15 @@ import javafx.scene.paint.Color;
 
 public class CreateEventScreenLayout {
 
-    public static Scene CreateEventScreen() {
+    private static TextField customerTextField;
+    private static TextField dateTextField;
+    private static TextArea contactPersonTextField;
+    private static TextArea descriptionTextField;
+    private static TextArea resultTextField;
+
+    public static Scene CreateEventScreen( Event visitEvent) {
+
+        final EventService eventService = new EventService();
 
         VBox mainLayout = new VBox();
         mainLayout.setPadding(new Insets(10, 10, 10, 10));
@@ -27,13 +38,13 @@ public class CreateEventScreenLayout {
         CreateLayoutCustomLabel restultLabel = new CreateLayoutCustomLabel("Result:");
 
         //Creating all the text areas
-        TextField customerTextField = new TextField();
-        TextField dateTextField = new TextField();
-        TextArea contactPersonTextField = new TextArea();
+        customerTextField = new TextField(visitEvent.getCustomerName());
+        dateTextField = new TextField(visitEvent.getDate());
+        contactPersonTextField = new TextArea(visitEvent.getContactPerson());
         contactPersonTextField.setMaxHeight(40);
-        TextArea descriptionTextField = new TextArea();
+        descriptionTextField = new TextArea(visitEvent.getEventDescription());
         descriptionTextField.setMaxHeight(80);
-        TextArea resultTextField = new TextArea();
+        resultTextField = new TextArea(visitEvent.getEventResult());
         resultTextField.setMaxHeight(40);
 
 
@@ -62,8 +73,55 @@ public class CreateEventScreenLayout {
         createCustomerGridPane.add(restultLabel, 0, 4, 1, 1);
         createCustomerGridPane.add(resultTextField, 1, 4, 1, 1);
 
-        mainLayout.getChildren().addAll(screen, createCustomerGridPane);
+        Button saveButton = new Button();
+        saveButton.setText("SAFE");
+        saveButton.setOnAction(event -> {
+                    eventService.updateEvent(visitEvent.getId());
+                    Display.showDisplay(EventScreenLayout.eventPage());
+                });
+
+        mainLayout.getChildren().addAll(screen, createCustomerGridPane, saveButton);
         return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
+    }
+
+    public static TextField getCustomerTextField() {
+        return customerTextField;
+    }
+
+    public static void setCustomerTextField(TextField customerTextField) {
+        CreateEventScreenLayout.customerTextField = customerTextField;
+    }
+
+    public static TextField getDateTextField() {
+        return dateTextField;
+    }
+
+    public static void setDateTextField(TextField dateTextField) {
+        CreateEventScreenLayout.dateTextField = dateTextField;
+    }
+
+    public static TextArea getContactPersonTextField() {
+        return contactPersonTextField;
+    }
+
+    public static void setContactPersonTextField(TextArea contactPersonTextField) {
+        CreateEventScreenLayout.contactPersonTextField = contactPersonTextField;
+    }
+
+    public static TextArea getDescriptionTextField() {
+        return descriptionTextField;
+    }
+
+    public static void setDescriptionTextField(TextArea descriptionTextField) {
+        CreateEventScreenLayout.descriptionTextField = descriptionTextField;
+    }
+
+    public static TextArea getResultTextField() {
+        return resultTextField;
+    }
+
+    public static void setResultTextField(TextArea resultTextField) {
+        CreateEventScreenLayout.resultTextField = resultTextField;
     }
 }
 
