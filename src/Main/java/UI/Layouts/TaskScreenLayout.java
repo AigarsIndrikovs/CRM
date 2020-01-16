@@ -16,6 +16,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+
+import javax.xml.bind.annotation.XmlType;
 
 public class TaskScreenLayout {
 
@@ -34,6 +37,7 @@ public class TaskScreenLayout {
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         TableColumn<Object, Object> columnTasks = new TableColumn<>("Tasks");
+        columnTasks.setMinWidth(600);
         columnTasks.setCellValueFactory(new PropertyValueFactory<>("taskDescription"));
 
         TableColumn<Task, Button> doneButton = new TableColumn<>("");
@@ -90,7 +94,9 @@ public class TaskScreenLayout {
 
         //Labels
         CustomLabel activeTasksLabel = new CustomLabel("Active tasks: ");
+        activeTasksLabel.setFont(Font.font(45));
         CustomLabel completedTasksLabel = new CustomLabel("Completed tasks: ");
+        completedTasksLabel.setFont(Font.font(45));
 
         //TextField
         addTaskTextField = new TextField();
@@ -98,9 +104,11 @@ public class TaskScreenLayout {
 
         //Buttons
         CustomButton addTaskButton = new CustomButton("Add");
+        addTaskButton.setMinWidth(100);
         addTaskButton.setOnAction(event -> { taskService.addTask();
             Display.showDisplay(TaskScreenLayout.taskPage());
         });
+
 
 
 
