@@ -16,7 +16,7 @@ public class CreateEventScreenLayout {
     public static Scene CreateEventScreen() {
 
         VBox mainLayout = new VBox();
-        mainLayout.setPadding(new Insets(10, 10, 10, 10));
+        mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
 
         // Creating all the custom Labels

@@ -4,6 +4,7 @@ import UI.Display;
 import UI.Elements.DropdownButtons;
 import hibernate.entities.Event;
 import hibernate.services.EventService;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,8 +21,10 @@ public class EventScreenLayout {
         EventService eventService = new EventService();
         List<Event> allEvents = eventService.getAllEvents();
         VBox mainLayout = new VBox();
+        mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
         TableView eventTableView = new TableView();
+        eventTableView.setPadding(new Insets(10, 10, 10, 10));
 
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));

@@ -3,6 +3,7 @@ package UI.Layouts;
 
 import UI.Display;
 import UI.Elements.DropdownButtons;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,8 +18,10 @@ public class TaskScreenLayout {
         // TaskService taskService = new TaskService();
         // List<Event> allTasks = eventService.getAllTasks();
         VBox mainLayout = new VBox();
+        mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
         TableView taskTableview = new TableView();
+        taskTableview.setPadding(new Insets(10, 10, 10, 10));
 
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));

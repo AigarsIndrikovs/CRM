@@ -5,6 +5,7 @@ import UI.Elements.ActionButtonTableCell;
 import UI.Elements.DropdownButtons;
 import hibernate.entities.Customer;
 import hibernate.services.CustomerService;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -22,8 +23,10 @@ public class CustomersScreenLayout {
         CustomerService customerService = new CustomerService();
         List<Customer> allCustomers = customerService.getAllCustomers();
         VBox mainLayout = new VBox();
+        mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
         TableView customerTableView = new TableView();
+        customerTableView.setPadding(new Insets(10, 10, 10, 10));
 
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
