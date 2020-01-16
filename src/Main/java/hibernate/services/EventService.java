@@ -1,5 +1,6 @@
 package hibernate.services;
 
+import UI.Layouts.CreateEventScreenLayout;
 import hibernate.entities.Customer;
 import hibernate.entities.Event;
 import hibernate.utility.DBConfig;
@@ -21,12 +22,12 @@ public class EventService {
         return  event;
     }
 
-    public void createEvent() {
+    public Event createEvent() {
+        Event event = new Event();
         Transaction transaction = null;
         try {
             Session session = DBConfig.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Event event = new Event();
             session.save(event);
             transaction.commit();
             session.close();
@@ -34,20 +35,22 @@ public class EventService {
             e.printStackTrace();
             System.out.println("Can't create event");
         }
+        return event;
     }
 
-    public void updateEvent(int id, Customer customer) {
+    public void updateEvent(int id) {
         Transaction transaction = null;
         try {
             Session session = DBConfig.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Event event = getEventById(id);
-            event.setCustomer(customer);
-            event.setCustomerName(customer);
-            event.setDate("10.01.2020");
-            event.setContactPerson("CEO and marketing manager");
-            event.setEventDescription("Discussed pricing and marketing support. Customer need additional catalogues and leaflets");
-            event.setEventResult("Agreed to start cooperation");
+//            event.setCustomer(customer);
+            event.setCustomerName(CreateEventScreenLayout.getCustomerTextField().getText());
+            event.setDate(CreateEventScreenLayout.getDateTextField().getText());
+            System.out.println(CreateEventScreenLayout.getDateTextField().getText());
+            event.setContactPerson(CreateEventScreenLayout.getContactPersonTextField().getText());
+            event.setEventDescription(CreateEventScreenLayout.getDescriptionTextField().getText());
+            event.setEventResult(CreateEventScreenLayout.getResultTextField().getText());
             session.update(event);
             transaction.commit();
             session.close();

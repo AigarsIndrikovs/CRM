@@ -3,7 +3,9 @@ package UI.Elements;
 import UI.Display;
 import UI.Layouts.*;
 import hibernate.entities.Customer;
+import hibernate.entities.Event;
 import hibernate.services.CustomerService;
+import hibernate.services.EventService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
@@ -20,6 +22,7 @@ public class DropdownButtons {
 
         HBox mainButtons = new HBox();
         final CustomerService customerService = new CustomerService();
+        final EventService eventService = new EventService();
 
         Menu menuDropdown = new Menu("Menu");
 
@@ -75,6 +78,10 @@ public class DropdownButtons {
         createMenuItem2.setContent(createEventsButton);
         createMenuItem2.setHideOnClick(true);
         createDropdownMenu.getItems().add(createMenuItem2);
+        createEventsButton.setOnAction(event -> {
+            Event visitEvent = eventService.createEvent();
+            Display.showDisplay(CreateEventScreenLayout.CreateEventScreen(visitEvent));
+        });
 
         MenuBar createBar = new MenuBar();
         createBar.getMenus().add(createDropdownMenu);

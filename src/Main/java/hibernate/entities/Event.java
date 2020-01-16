@@ -61,8 +61,8 @@ public class Event implements Serializable {
         return customerName;
     }
 
-    public void setCustomerName(Customer customer) {
-        this.customerName = customer.getName();
+    public void setCustomerName(String string) {
+        this.customerName = string;
     }
 
     public void setDate(String date) {
@@ -93,15 +93,4 @@ public class Event implements Serializable {
         this.eventResult = eventResult;
     }
 
-    @Override
-    public String toString() {
-        return "Events{" +
-                "id=" + id +
-                ", customer=" + customer.getName() +
-                ", date=" + date +
-                ", contactPerson='" + contactPerson + '\'' +
-                ", eventDescription='" + eventDescription + '\'' +
-                ", eventResult='" + eventResult + '\'' +
-                '}';
-    }
 }

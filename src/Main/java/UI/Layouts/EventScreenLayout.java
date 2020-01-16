@@ -1,13 +1,14 @@
 package UI.Layouts;
 
 import UI.Display;
+import UI.Elements.ActionButtonTableCell;
 import UI.Elements.DropdownButtons;
+import hibernate.entities.Customer;
 import hibernate.entities.Event;
 import hibernate.services.EventService;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -46,8 +47,28 @@ public class EventScreenLayout {
         columnEventDescription.setMaxWidth(200);
         columnEventResult.setCellValueFactory(new PropertyValueFactory<>("eventResult"));
 
+        TableColumn<Event, Button> editButton = new TableColumn<>("Edit");
+        editButton.setCellFactory(ActionButtonTableCell.forTableColumn("Edit", (Event event) -> {
+            event = eventService.getEventById(event.getId());
+            Display.showDisplay(CreateEventScreenLayout.CreateEventScreen(event));
+            return null;
+        }));
 
-        eventTableView.getColumns().addAll(columnId, columnCustomer, columnDate, columnContactPerson, columnEventDescription, columnEventResult);
+        TableColumn<Event, Button> deleteButton = new TableColumn<>("Delete");
+        deleteButton.setCellFactory(ActionButtonTableCell.forTableColumn("Delete", (Event event) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete event?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES) {
+                eventService.deleteEventById(event.getId());
+                Display.showDisplay(EventScreenLayout.eventPage());
+            } else if (alert.getResult() == ButtonType.NO) {
+                Display.showDisplay(EventScreenLayout.eventPage());
+            }
+            return null;
+        }));
+
+
+        eventTableView.getColumns().addAll(columnId, columnCustomer, columnDate, columnContactPerson, columnEventDescription, columnEventResult, editButton, deleteButton);
 
          eventTableView.getItems().addAll(allEvents);
 

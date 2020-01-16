@@ -7,9 +7,7 @@ import hibernate.entities.Customer;
 import hibernate.services.CustomerService;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -59,8 +57,16 @@ public class CustomersScreenLayout {
             return null;
         }));
 
-        TableColumn<Object, Button> deleteButton = new TableColumn<>("Delete");
-        deleteButton.setCellFactory(ActionButtonTableCell.<Object>forTableColumn("Delete", (Object p) -> {
+        TableColumn<Customer, Button> deleteButton = new TableColumn<>("Delete");
+        deleteButton.setCellFactory(ActionButtonTableCell.forTableColumn("Delete", (Customer customer) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete customer?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES) {
+                customerService.deleteCustomerById(customer.getId());
+                Display.showDisplay(CustomersScreenLayout.customerPage());
+            } else if (alert.getResult() == ButtonType.NO) {
+                Display.showDisplay(CustomersScreenLayout.customerPage());
+            }
             return null;
         }));
 
