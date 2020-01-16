@@ -2,14 +2,16 @@ package UI.Layouts;
 
 
 import UI.Display;
+import UI.Elements.ActionButtonTableCell;
 import UI.Elements.CustomButton;
 import UI.Elements.CustomLabel;
 import UI.Elements.DropdownButtons;
+import hibernate.entities.Customer;
+import hibernate.entities.Task;
+import hibernate.services.TaskService;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -17,10 +19,11 @@ import javafx.scene.layout.VBox;
 
 public class TaskScreenLayout {
 
+    public static TextField addTaskTextField;
+
 
     public static Scene taskPage() {
-        // TaskService taskService = new TaskService();
-        // List<Event> allTasks = eventService.getAllTasks();
+         TaskService taskService = new TaskService();
         VBox mainLayout = new VBox();
         mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
@@ -31,33 +34,75 @@ public class TaskScreenLayout {
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         TableColumn<Object, Object> columnTasks = new TableColumn<>("Tasks");
-        columnTasks.setCellValueFactory(new PropertyValueFactory<>("tasks"));
-        activeTasksTableView.getColumns().addAll(columnId, columnTasks);
+        columnTasks.setCellValueFactory(new PropertyValueFactory<>("taskDescription"));
+
+        TableColumn<Task, Button> doneButton = new TableColumn<>("");
+        doneButton.setCellFactory(ActionButtonTableCell.forTableColumn("Done", (Task task) -> {
+            taskService.changeStatus(task.getId(), false);
+            Display.showDisplay(TaskScreenLayout.taskPage());
+            return null;
+        }));
+
+        TableColumn<Task, Button> deleteActive = new TableColumn<>("");
+        deleteActive.setCellFactory(ActionButtonTableCell.forTableColumn("Delete", (Task task) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete task?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES) {
+                taskService.deleteTaskById(task.getId());
+                Display.showDisplay(TaskScreenLayout.taskPage());
+            } else if (alert.getResult() == ButtonType.NO) {
+                Display.showDisplay(TaskScreenLayout.taskPage());
+            }
+            return null;
+        }));
+        activeTasksTableView.getColumns().addAll(columnId, columnTasks, doneButton, deleteActive);
+        activeTasksTableView.getItems().addAll(taskService.getSortedTask(true));
 
         //CompletedTasks Table
         TableView completedTasksTableView = new TableView();
         completedTasksTableView.setPadding(new Insets(10, 10, 10, 10));
         TableColumn<Object, Object> columnCompletedId = new TableColumn<>("ID");
-        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnCompletedId.setCellValueFactory(new PropertyValueFactory<>("id"));
         TableColumn<Object, Object> columnCompletedTasks = new TableColumn<>("Tasks");
-        columnTasks.setCellValueFactory(new PropertyValueFactory<>("tasks"));
-        completedTasksTableView.getColumns().addAll(columnCompletedId, columnCompletedTasks);
-        // customerTableView.getItems().addAll(allCustomers);
+        columnCompletedTasks.setCellValueFactory(new PropertyValueFactory<>("taskDescription"));
+
+        TableColumn<Task, Button> undoButton = new TableColumn<>("");
+        undoButton.setCellFactory(ActionButtonTableCell.forTableColumn("Undo", (Task task) -> {
+            taskService.changeStatus(task.getId(), true);
+            Display.showDisplay(TaskScreenLayout.taskPage());
+            return null;
+        }));
+
+        TableColumn<Task, Button> deletePasive = new TableColumn<>("");
+        deletePasive.setCellFactory(ActionButtonTableCell.forTableColumn("Delete", (Task task) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete task?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES) {
+                taskService.deleteTaskById(task.getId());
+                Display.showDisplay(TaskScreenLayout.taskPage());
+            } else if (alert.getResult() == ButtonType.NO) {
+                Display.showDisplay(TaskScreenLayout.taskPage());
+            }
+            return null;
+        }));
+        completedTasksTableView.getColumns().addAll(columnCompletedId, columnCompletedTasks, undoButton, deletePasive);
+        completedTasksTableView.getItems().addAll(taskService.getSortedTask(false));
 
         //Labels
         CustomLabel activeTasksLabel = new CustomLabel("Active tasks: ");
         CustomLabel completedTasksLabel = new CustomLabel("Completed tasks: ");
 
         //TextField
-        TextField addTaskTextField = new TextField();
+        addTaskTextField = new TextField();
         addTaskTextField.setPrefWidth(800);
 
         //Buttons
         CustomButton addTaskButton = new CustomButton("Add");
-        CustomButton completedTaskButton = new CustomButton("Completed");
-        CustomButton deleteTaskButton = new CustomButton("Delete");
-        CustomButton undoCompletedTaskButton = new CustomButton("Undo");
-        CustomButton deleteCompletedTaskButton = new CustomButton("Delete");
+        addTaskButton.setOnAction(event -> { taskService.addTask();
+            Display.showDisplay(TaskScreenLayout.taskPage());
+        });
+
+
 
         //VBox
         VBox taskScreenVBox = new VBox();

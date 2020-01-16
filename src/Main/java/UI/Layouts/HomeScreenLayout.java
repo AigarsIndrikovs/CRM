@@ -4,6 +4,7 @@ import UI.Display;
 import UI.Elements.CustomLabel;
 import UI.Elements.DropdownButtons;
 import UI.Elements.HomeScreenInfoLabel;
+import hibernate.services.Reports;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,7 +36,7 @@ public class HomeScreenLayout extends Display {
         CustomLabel finishedTasks = new CustomLabel("Finished tasks: ");
         finishedTasks.setFont(Font.font(50));
 
-        HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel("sdffsdfsdfsdf");
+        HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel("sasd");
         HomeScreenInfoLabel eventCountInfo = new HomeScreenInfoLabel("sdffsdfsdffd");
         HomeScreenInfoLabel activeTasksInfo = new HomeScreenInfoLabel("wefwefwef");
         HomeScreenInfoLabel finishedTasksInfo = new HomeScreenInfoLabel("234324");
