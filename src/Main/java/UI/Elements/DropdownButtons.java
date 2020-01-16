@@ -6,11 +6,8 @@ import hibernate.entities.Customer;
 import hibernate.entities.Event;
 import hibernate.services.CustomerService;
 import hibernate.services.EventService;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 public class DropdownButtons {
 
@@ -26,28 +23,28 @@ public class DropdownButtons {
 
         Menu menuDropdown = new Menu("Menu");
 
-        CustomMenuButton menuHomeButton = new CustomMenuButton("Home");
+        CustomButton menuHomeButton = new CustomButton("Home");
         CustomMenuItem customMenuItem = new CustomMenuItem();
         customMenuItem.setContent(menuHomeButton);
         customMenuItem.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem);
         menuHomeButton.setOnAction(event -> Display.showDisplay(HomeScreenLayout.homepage()));
 
-        CustomMenuButton customerListButton = new CustomMenuButton("Customers");
+        CustomButton customerListButton = new CustomButton("Customers");
         CustomMenuItem customMenuItem2 = new CustomMenuItem();
         customMenuItem2.setContent(customerListButton);
         customMenuItem2.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem2);
         customerListButton.setOnAction(event -> Display.showDisplay(CustomersScreenLayout.customerPage()));
 
-        CustomMenuButton menuEventsButton = new CustomMenuButton("Events");
+        CustomButton menuEventsButton = new CustomButton("Events");
         CustomMenuItem customMenuItem4 = new CustomMenuItem();
         customMenuItem4.setContent(menuEventsButton);
         customMenuItem4.setHideOnClick(true);
         menuDropdown.getItems().add(customMenuItem4);
         menuEventsButton.setOnAction(event -> Display.showDisplay(EventScreenLayout.eventPage()));
 
-        CustomMenuButton menuTasksButton = new CustomMenuButton("Tasks");
+        CustomButton menuTasksButton = new CustomButton("Tasks");
         CustomMenuItem customMenuItem5 = new CustomMenuItem();
         customMenuItem5.setContent(menuTasksButton);
         customMenuItem5.setHideOnClick(true);
@@ -62,7 +59,7 @@ public class DropdownButtons {
 
         Menu createDropdownMenu = new Menu("Create");
 
-        CustomMenuButton createCustomer = new CustomMenuButton("Create customer");
+        CustomButton createCustomer = new CustomButton("Create customer");
         CustomMenuItem createMenuItem = new CustomMenuItem();
         createMenuItem.setContent(createCustomer);
         createMenuItem.setHideOnClick(true);
@@ -73,7 +70,7 @@ public class DropdownButtons {
         });
 
 
-        CustomMenuButton createEventsButton = new CustomMenuButton("Create event");
+        CustomButton createEventsButton = new CustomButton("Create event");
         CustomMenuItem createMenuItem2 = new CustomMenuItem();
         createMenuItem2.setContent(createEventsButton);
         createMenuItem2.setHideOnClick(true);

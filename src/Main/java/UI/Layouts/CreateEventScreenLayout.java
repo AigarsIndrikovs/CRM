@@ -1,7 +1,7 @@
 package UI.Layouts;
 
 import UI.Display;
-import UI.Elements.CreateLayoutCustomLabel;
+import UI.Elements.CustomLabel;
 import UI.Elements.DropdownButtons;
 import hibernate.entities.Event;
 import hibernate.services.EventService;
@@ -31,11 +31,11 @@ public class CreateEventScreenLayout {
         HBox screen = DropdownButtons.showMainButtons();
 
         // Creating all the custom Labels
-        CreateLayoutCustomLabel customerLabel = new CreateLayoutCustomLabel("Customer:");
-        CreateLayoutCustomLabel dateLabel = new CreateLayoutCustomLabel("Date:");
-        CreateLayoutCustomLabel contactPersonLabel = new CreateLayoutCustomLabel("Contact Person(s):");
-        CreateLayoutCustomLabel descriptionLabel = new CreateLayoutCustomLabel("Description:");
-        CreateLayoutCustomLabel restultLabel = new CreateLayoutCustomLabel("Result:");
+        CustomLabel customerLabel = new CustomLabel("Customer:");
+        CustomLabel dateLabel = new CustomLabel("Date:");
+        CustomLabel contactPersonLabel = new CustomLabel("Contact Person(s):");
+        CustomLabel descriptionLabel = new CustomLabel("Description:");
+        CustomLabel resultLabel = new CustomLabel("Result:");
 
         //Creating all the text areas
         customerTextField = new TextField(visitEvent.getCustomerName());
@@ -70,11 +70,11 @@ public class CreateEventScreenLayout {
         createCustomerGridPane.add(descriptionLabel, 0, 3, 1, 1);
         createCustomerGridPane.add(descriptionTextField, 1, 3, 1, 1);
 
-        createCustomerGridPane.add(restultLabel, 0, 4, 1, 1);
+        createCustomerGridPane.add(resultLabel, 0, 4, 1, 1);
         createCustomerGridPane.add(resultTextField, 1, 4, 1, 1);
 
         Button saveButton = new Button();
-        saveButton.setText("SAFE");
+        saveButton.setText("SAVE");
         saveButton.setOnAction(event -> {
                     eventService.updateEvent(visitEvent.getId());
                     Display.showDisplay(EventScreenLayout.eventPage());

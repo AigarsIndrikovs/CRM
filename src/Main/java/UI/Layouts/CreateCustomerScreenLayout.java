@@ -1,7 +1,7 @@
 package UI.Layouts;
 
 import UI.Display;
-import UI.Elements.CreateLayoutCustomLabel;
+import UI.Elements.CustomLabel;
 import UI.Elements.DropdownButtons;
 import hibernate.entities.Customer;
 import hibernate.services.CustomerService;
@@ -34,13 +34,13 @@ public class CreateCustomerScreenLayout {
         HBox screen = DropdownButtons.showMainButtons();
 
         // Creating all the custom Labels
-        CreateLayoutCustomLabel nameLabel = new CreateLayoutCustomLabel("Name:");
-        CreateLayoutCustomLabel addressLabel = new CreateLayoutCustomLabel("Address:");
-        CreateLayoutCustomLabel regNumberLabel = new CreateLayoutCustomLabel("Registration Number:");
-        CreateLayoutCustomLabel phoneNumberLabel = new CreateLayoutCustomLabel("Phone Number:");
-        CreateLayoutCustomLabel emailLabel = new CreateLayoutCustomLabel("E-mail:");
-        CreateLayoutCustomLabel webPageLabel = new CreateLayoutCustomLabel("Webpage:");
-        CreateLayoutCustomLabel contactLabel = new CreateLayoutCustomLabel("Contact Person:");
+        CustomLabel nameLabel = new CustomLabel("Name:");
+        CustomLabel addressLabel = new CustomLabel("Address:");
+        CustomLabel regNumberLabel = new CustomLabel("Registration Number:");
+        CustomLabel phoneNumberLabel = new CustomLabel("Phone Number:");
+        CustomLabel emailLabel = new CustomLabel("E-mail:");
+        CustomLabel webPageLabel = new CustomLabel("Webpage:");
+        CustomLabel contactLabel = new CustomLabel("Contact Person:");
 
         //Creating all the text areas
         nameTextField = new TextField(customer.getName());
