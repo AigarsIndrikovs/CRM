@@ -20,13 +20,15 @@ public class HomeScreenLayout extends Display {
         VBox mainLayout = new VBox();
         mainLayout.setPadding(new Insets(0, 10, 10, 10));
         HBox screen = DropdownButtons.showMainButtons();
+
+        //Creating gridpane for logo. Added logo from URL
         GridPane homScreenLogoPane = new GridPane();
         homScreenLogoPane.setPadding(new Insets(50, 10, 10, 10));
         homScreenLogoPane.setAlignment(Pos.CENTER);
-
         Image companyLogo = new Image("https://logodix.com/logo/237441.png");
         homScreenLogoPane.getChildren().addAll(new ImageView(companyLogo));
 
+        //Creating all custom labels and setting font size
         CustomLabel customerCount = new CustomLabel("Customer count: ");
         customerCount.setFont(Font.font(50));
         CustomLabel eventCount = new CustomLabel("Event count: ");
@@ -36,11 +38,13 @@ public class HomeScreenLayout extends Display {
         CustomLabel finishedTasks = new CustomLabel("Finished tasks: ");
         finishedTasks.setFont(Font.font(50));
 
+        //Creating custom labels with information from database
         HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel("sasd");
         HomeScreenInfoLabel eventCountInfo = new HomeScreenInfoLabel("sdffsdfsdffd");
         HomeScreenInfoLabel activeTasksInfo = new HomeScreenInfoLabel("wefwefwef");
         HomeScreenInfoLabel finishedTasksInfo = new HomeScreenInfoLabel("234324");
 
+        //Creating gridpane and adding elements to it
         GridPane homeScreenInfoGrid = new GridPane();
         homeScreenInfoGrid.setPadding(new Insets(100, 10, 10, 10));
         homeScreenInfoGrid.setAlignment(Pos.TOP_CENTER);
@@ -53,9 +57,7 @@ public class HomeScreenLayout extends Display {
         homeScreenInfoGrid.add(finishedTasks, 0, 3, 1, 1);
         homeScreenInfoGrid.add(finishedTasksInfo, 1, 3, 1, 1);
 
-
         mainLayout.getChildren().addAll(screen, homScreenLogoPane, homeScreenInfoGrid);
-
         return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 

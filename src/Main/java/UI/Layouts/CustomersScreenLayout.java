@@ -26,30 +26,25 @@ public class CustomersScreenLayout {
         TableView customerTableView = new TableView();
         customerTableView.setPadding(new Insets(10, 10, 10, 10));
 
+        //Adding all columns to TableView
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-
         TableColumn<Object, Object> columnName = new TableColumn<>("Name");
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-
         TableColumn<Object, Object> columnAddress = new TableColumn<>("Address");
         columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-
-        TableColumn<Object, Object> columnRegistrationNumber = new TableColumn<>("Registration Number");
+        TableColumn<Object, Object> columnRegistrationNumber = new TableColumn<>("Reg. Number");
         columnRegistrationNumber.setCellValueFactory(new PropertyValueFactory<>("regNumber"));
-
         TableColumn<Object, Object> columnPhone = new TableColumn<>("Phone");
         columnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-
         TableColumn<Object, Object> columnEmail = new TableColumn<>("e-mail");
         columnEmail.setCellValueFactory(new PropertyValueFactory<>("mail"));
-
         TableColumn<Object, Object> columnWebPage = new TableColumn<>("Webpage");
         columnWebPage.setCellValueFactory(new PropertyValueFactory<>("webPage"));
-
         TableColumn<Object, Object> columnContactPerson = new TableColumn<>("Contact Person");
         columnContactPerson.setCellValueFactory(new PropertyValueFactory<>("contactPerson"));
 
+        //Adding EDIT button to tableview and setting OnAction event
         TableColumn<Customer, Button> editButton = new TableColumn<>("Edit");
         editButton.setCellFactory(ActionButtonTableCell.forTableColumn("Edit", (Customer customer) -> {
             customer = customerService.getCustomerById(customer.getId());
@@ -57,11 +52,12 @@ public class CustomersScreenLayout {
             return null;
         }));
 
+        //Adding DELETE button to tableview and setting OnAction event
         TableColumn<Customer, Button> deleteButton = new TableColumn<>("Delete");
         deleteButton.setCellFactory(ActionButtonTableCell.forTableColumn("Delete", (Customer customer) -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete customer?", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
-            if(alert.getResult() == ButtonType.YES) {
+            if (alert.getResult() == ButtonType.YES) {
                 customerService.deleteCustomerById(customer.getId());
                 Display.showDisplay(CustomersScreenLayout.customerPage());
             } else if (alert.getResult() == ButtonType.NO) {
@@ -70,15 +66,36 @@ public class CustomersScreenLayout {
             return null;
         }));
 
+        //Setting columnSizes for customer Table
+        columnId.setPrefWidth(40);
+        columnName.setPrefWidth(110);
+        columnRegistrationNumber.setPrefWidth(110);
+        columnPhone.setPrefWidth(110);
+        columnEmail.setPrefWidth(110);
+        columnWebPage.setPrefWidth(110);
+        columnContactPerson.setPrefWidth(110);
+        editButton.setPrefWidth(80);
+        deleteButton.setPrefWidth(80);
+        columnAddress.prefWidthProperty().bind(
+                customerTableView.widthProperty()
+                        .subtract(columnName.widthProperty())
+                        .subtract(columnRegistrationNumber.widthProperty())
+                        .subtract(columnPhone.widthProperty())
+                        .subtract(columnEmail.widthProperty())
+                        .subtract(columnWebPage.widthProperty())
+                        .subtract(columnContactPerson.widthProperty())
+                        .subtract(columnId.widthProperty())
+                        .subtract(editButton.widthProperty())
+                        .subtract(deleteButton.widthProperty())
+                        .subtract(20) //Border values
+        );
+
+
         customerTableView.getColumns().addAll(columnId, columnName, columnAddress, columnRegistrationNumber, columnPhone, columnEmail, columnWebPage, columnContactPerson, editButton, deleteButton);
-
         customerTableView.getItems().addAll(allCustomers);
-
         mainLayout.getChildren().addAll(screen, customerTableView);
-
         return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
-
 
 
 }

@@ -34,7 +34,6 @@ public class ActionButtonTableCell <S> extends TableCell<S, Button> {
     @Override
     public void updateItem(Button item, boolean empty) {
         super.updateItem(item, empty);
-
         if (empty) {
             setGraphic(null);
         } else {

@@ -47,6 +47,14 @@ public class CreateEventScreenLayout {
         resultTextField = new TextArea(visitEvent.getEventResult());
         resultTextField.setMaxHeight(40);
 
+        // Creating save button
+        Button saveButton = new Button();
+        saveButton.setText("SAVE");
+        saveButton.setOnAction(event -> {
+            eventService.updateEvent(visitEvent.getId());
+            Display.showDisplay(EventScreenLayout.eventPage());
+        });
+
 
         //Creating gridpane, configuring it and adding elements
         GridPane createCustomerGridPane = new GridPane();
@@ -73,14 +81,11 @@ public class CreateEventScreenLayout {
         createCustomerGridPane.add(resultLabel, 0, 4, 1, 1);
         createCustomerGridPane.add(resultTextField, 1, 4, 1, 1);
 
-        Button saveButton = new Button();
-        saveButton.setText("SAVE");
-        saveButton.setOnAction(event -> {
-                    eventService.updateEvent(visitEvent.getId());
-                    Display.showDisplay(EventScreenLayout.eventPage());
-                });
+        createCustomerGridPane.add(saveButton, 1,5,1,1);
 
-        mainLayout.getChildren().addAll(screen, createCustomerGridPane, saveButton);
+
+
+        mainLayout.getChildren().addAll(screen, createCustomerGridPane);
         return new Scene(mainLayout, Display.WIDTH, Display.HEIGHT);
     }
 

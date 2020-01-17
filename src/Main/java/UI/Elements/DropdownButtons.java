@@ -54,7 +54,6 @@ public class DropdownButtons {
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(menuDropdown);
 
-
         ////////
 
         Menu createDropdownMenu = new Menu("Create");
@@ -68,7 +67,6 @@ public class DropdownButtons {
             Customer customer = customerService.createCustomer();
             Display.showDisplay(CreateCustomerScreenLayout.CreateCustomerScreen(customer));
         });
-
 
         CustomButton createEventsButton = new CustomButton("Create event");
         CustomMenuItem createMenuItem2 = new CustomMenuItem();

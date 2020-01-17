@@ -16,7 +16,6 @@ import javafx.scene.paint.Color;
 
 public class CreateCustomerScreenLayout {
 
-
     private static TextField nameTextField;
     private static TextArea addressTextField;
     private static TextField regNumberTextField;
@@ -26,7 +25,6 @@ public class CreateCustomerScreenLayout {
     private static TextField contactTextField;
 
     public static Scene CreateCustomerScreen(Customer customer) {
-
         final CustomerService customerService = new CustomerService();
 
         VBox mainLayout = new VBox();
@@ -52,6 +50,13 @@ public class CreateCustomerScreenLayout {
         webpageTextField = new TextField(customer.getWebPage());
         contactTextField = new TextField(customer.getContactPerson());
 
+        // Save Button config
+        Button saveButton = new Button();
+        saveButton.setText("SAVE");
+        saveButton.setOnAction(event -> {customerService.updateCustomer(customer.getId());
+            Display.showDisplay(CustomersScreenLayout.customerPage());
+        });
+
         //Creating gridpane, configuring it and adding elements
         GridPane createCustomerGridPane = new GridPane();
         createCustomerGridPane.setHgap(10);
@@ -61,36 +66,24 @@ public class CreateCustomerScreenLayout {
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         createCustomerGridPane.setPadding(new Insets(10, 10, 10, 10));
 
-
+        //Adding all elements to gridpane
         createCustomerGridPane.add(nameLabel, 0, 0, 1, 1);
         createCustomerGridPane.add(nameTextField, 1, 0, 1, 1);
-
         createCustomerGridPane.add(addressLabel, 0, 1, 1, 1);
         createCustomerGridPane.add(addressTextField, 1, 1, 1, 1);
-
         createCustomerGridPane.add(regNumberLabel, 0, 2, 1, 1);
         createCustomerGridPane.add(regNumberTextField, 1, 2, 1, 1);
-
         createCustomerGridPane.add(phoneNumberLabel, 0, 3, 1, 1);
         createCustomerGridPane.add(phoneNumberTextField, 1, 3, 1, 1);
-
         createCustomerGridPane.add(emailLabel, 0, 4, 1, 1);
         createCustomerGridPane.add(emailTextField, 1, 4, 1, 1);
-
         createCustomerGridPane.add(webPageLabel, 0, 5, 1, 1);
         createCustomerGridPane.add(webpageTextField, 1, 5, 1, 1);
-
         createCustomerGridPane.add(contactLabel, 0, 6, 1, 1);
         createCustomerGridPane.add(contactTextField, 1, 6, 1, 1);
+        createCustomerGridPane.add(saveButton, 1,7,1,1);
 
-        // Safe Button config
-        Button saveButton = new Button();
-        saveButton.setText("SAFE");
-        saveButton.setOnAction(event -> {customerService.updateCustomer(customer.getId());
-            Display.showDisplay(CustomersScreenLayout.customerPage());
-        });
-
-        mainLayout.getChildren().addAll(screen, createCustomerGridPane, saveButton);
+        mainLayout.getChildren().addAll(screen, createCustomerGridPane);
         return new Scene(mainLayout,Display.WIDTH, Display.HEIGHT);
     }
 
@@ -151,7 +144,5 @@ public class CreateCustomerScreenLayout {
     }
 
     public static void setFields() {
-
     }
-
 }
