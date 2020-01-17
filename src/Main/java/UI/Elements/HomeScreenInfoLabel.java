@@ -1,5 +1,6 @@
 package UI.Elements;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -14,6 +15,7 @@ public class HomeScreenInfoLabel extends Label {
         setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         setPrefWidth(120);
+        setAlignment(Pos.CENTER);
 
     }
 }

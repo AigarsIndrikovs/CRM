@@ -25,7 +25,9 @@ public class HomeScreenLayout extends Display {
         GridPane homScreenLogoPane = new GridPane();
         homScreenLogoPane.setPadding(new Insets(50, 10, 10, 10));
         homScreenLogoPane.setAlignment(Pos.CENTER);
-        Image companyLogo = new Image("https://logodix.com/logo/237441.png");
+
+        Image companyLogo = new Image("file:///C:\\Users\\User\\Desktop\\logo.png");
+//        Image companyLogo = new Image("https://photos.app.goo.gl/DFBTzFD9DDsfxemcA");
         homScreenLogoPane.getChildren().addAll(new ImageView(companyLogo));
 
         //Creating all custom labels and setting font size
@@ -38,11 +40,10 @@ public class HomeScreenLayout extends Display {
         CustomLabel finishedTasks = new CustomLabel("Finished tasks: ");
         finishedTasks.setFont(Font.font(50));
 
-        //Creating custom labels with information from database
-        HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel("sasd");
-        HomeScreenInfoLabel eventCountInfo = new HomeScreenInfoLabel("sdffsdfsdffd");
-        HomeScreenInfoLabel activeTasksInfo = new HomeScreenInfoLabel("wefwefwef");
-        HomeScreenInfoLabel finishedTasksInfo = new HomeScreenInfoLabel("234324");
+        HomeScreenInfoLabel customerCountInfo = new HomeScreenInfoLabel(Reports.customerCount());
+        HomeScreenInfoLabel eventCountInfo = new HomeScreenInfoLabel(Reports.eventCount());
+        HomeScreenInfoLabel activeTasksInfo = new HomeScreenInfoLabel(Reports.activeTaskCount());
+        HomeScreenInfoLabel finishedTasksInfo = new HomeScreenInfoLabel(Reports.inactiveTaskCount());
 
         //Creating gridpane and adding elements to it
         GridPane homeScreenInfoGrid = new GridPane();
