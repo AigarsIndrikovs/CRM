@@ -19,6 +19,9 @@ public class Task implements Serializable {
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "taskNumber")
+    private String taskNumber;
+
     public int getId() {
         return id;
     }
@@ -41,5 +44,13 @@ public class Task implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getTaskNumber() {
+        return taskNumber;
+    }
+
+    public void setTaskNumber(String taskNumber) {
+        this.taskNumber = taskNumber;
     }
 }

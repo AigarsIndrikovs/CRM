@@ -27,8 +27,8 @@ public class CustomersScreenLayout {
         customerTableView.setPadding(new Insets(10, 10, 10, 10));
 
         //Adding all columns to TableView
-        TableColumn<Object, Object> columnId = new TableColumn<>("ID");
-        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<Object, Object> columnId = new TableColumn<>("Nr.");
+        columnId.setCellValueFactory(new PropertyValueFactory<>("numberInList"));
         TableColumn<Object, Object> columnName = new TableColumn<>("Name");
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<Object, Object> columnAddress = new TableColumn<>("Address");

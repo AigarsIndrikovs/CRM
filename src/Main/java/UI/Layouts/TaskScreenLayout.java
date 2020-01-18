@@ -29,7 +29,7 @@ public class TaskScreenLayout {
         TableView activeTasksTableView = new TableView();
         activeTasksTableView.setPadding(new Insets(10, 10, 10, 10));
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
-        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnId.setCellValueFactory(new PropertyValueFactory<>("taskNumber"));
         TableColumn<Object, Object> columnTasks = new TableColumn<>("Tasks");
         columnTasks.setCellValueFactory(new PropertyValueFactory<>("taskDescription"));
 
@@ -72,7 +72,7 @@ public class TaskScreenLayout {
         TableView completedTasksTableView = new TableView();
         completedTasksTableView.setPadding(new Insets(10, 10, 10, 10));
         TableColumn<Object, Object> columnCompletedId = new TableColumn<>("ID");
-        columnCompletedId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnCompletedId.setCellValueFactory(new PropertyValueFactory<>("taskNumber"));
         TableColumn<Object, Object> columnCompletedTasks = new TableColumn<>("Tasks");
         columnCompletedTasks.setCellValueFactory(new PropertyValueFactory<>("taskDescription"));
 

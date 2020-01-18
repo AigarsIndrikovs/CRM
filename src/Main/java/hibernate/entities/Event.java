@@ -36,6 +36,9 @@ public class Event implements Serializable {
     @Column(name = "Result")
     private String eventResult;
 
+    @Column(name = "eventNumber")
+    private String eventNumber;
+
 
     public int getId() {
         return id;
@@ -93,4 +96,11 @@ public class Event implements Serializable {
         this.eventResult = eventResult;
     }
 
+    public String getEventNumber() {
+        return eventNumber;
+    }
+
+    public void setEventNumber(String eventNumber) {
+        this.eventNumber = eventNumber;
+    }
 }

@@ -34,6 +34,9 @@ public class Customer implements Serializable {
     @Column(name = "ContactPerson")
     private String contactPerson;
 
+    @Column(name = "numberInList")
+    private String numberInList;
+
     public int getId() {
         return id;
     }
@@ -98,4 +101,11 @@ public class Customer implements Serializable {
         this.contactPerson = contactPerson;
     }
 
+    public String getNumberInList() {
+        return numberInList;
+    }
+
+    public void setNumberInList(String numberInList) {
+        this.numberInList = numberInList;
+    }
 }

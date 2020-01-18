@@ -38,6 +38,7 @@ public class TaskService {
     public List<Task> getSortedTask(boolean status) {
         List<Task> allTasks;
         List<Task> sortedList = new ArrayList<>();
+        List<Task> reversedList = new ArrayList<>();
         Session session = DBConfig.getSessionFactory().openSession();
         allTasks = session.createQuery("from Task", Task.class).getResultList();
         session.close();
@@ -46,7 +47,13 @@ public class TaskService {
                 sortedList.add(allTasks.get(i));
             }
         }
-        return sortedList;
+        for (int i = 0; i < sortedList.size(); i++) {
+            reversedList.add(sortedList.get(sortedList.size()-(1+i)));
+        }
+        for (int i = 0; i < reversedList.size(); i++) {
+            reversedList.get(i).setTaskNumber(String.valueOf(i + 1));
+        }
+        return reversedList;
     }
 
     public void deleteTaskById(int id) {

@@ -61,6 +61,9 @@ public class CustomerService {
         List<Customer> allCustomers;
         Session session = DBConfig.getSessionFactory().openSession();
         allCustomers = session.createQuery("from Customer", Customer.class).getResultList();
+        for (int i = 0; i < allCustomers.size(); i++) {
+            allCustomers.get(i).setNumberInList(String.valueOf(i + 1));
+        }
         session.close();
         return allCustomers;
     }

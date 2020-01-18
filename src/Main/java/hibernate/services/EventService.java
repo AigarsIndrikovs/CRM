@@ -64,6 +64,9 @@ public class EventService {
         List<Event> allEvents;
         Session session = DBConfig.getSessionFactory().openSession();
         allEvents = session.createQuery("from Event", Event.class).getResultList();
+        for (int i = 0; i < allEvents.size(); i++) {
+            allEvents.get(i).setEventNumber(String.valueOf(i + 1));
+        }
         session.close();
         return allEvents;
     }

@@ -28,7 +28,7 @@ public class EventScreenLayout {
 
         //Adding all columns to TableView + adding buttons with on Click functions.
         TableColumn<Object, Object> columnId = new TableColumn<>("ID");
-        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnId.setCellValueFactory(new PropertyValueFactory<>("eventNumber"));
         TableColumn<Object, Object> columnCustomer = new TableColumn<>("Customer");
         columnCustomer.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         TableColumn<Object, Object> columnDate = new TableColumn<>("Date");
