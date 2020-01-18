@@ -23,7 +23,7 @@ To Connect to database you need to change LOGIN and PASSWORD for your database i
 
 ### Prerequisites
 
-JAVA supported IDE (IntelliJ, NetBeans, Eclipse, etc)
+JAVA supported IDE (IntelliJ, NetBeans, Eclipse, etc)  
 MySQL workbench  
 
 ```
