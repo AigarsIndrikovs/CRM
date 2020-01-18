@@ -17,18 +17,12 @@ To Connect to database you need to change LOGIN and PASSWORD for your database i
 ```
                 settings.put(Environment.USER, "LOGIN");
                 settings.put(Environment.PASS, "PASSWORD");
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 ```
 
 ### Prerequisites
 
 JAVA supported IDE (IntelliJ, NetBeans, Eclipse, etc)  
 MySQL workbench  
-
-```
-Give examples
-```
 
 ## Running the tests
 
@@ -46,6 +40,7 @@ Give an example
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [MySQL Workbench](https://www.mysql.com/products/workbench/) - Database  
+* [Hibernate](https://hibernate.org/) - mapping tool for the Java
 
 ## Authors
 
