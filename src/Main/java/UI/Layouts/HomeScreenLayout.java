@@ -26,8 +26,7 @@ public class HomeScreenLayout extends Display {
         homScreenLogoPane.setPadding(new Insets(50, 10, 10, 10));
         homScreenLogoPane.setAlignment(Pos.CENTER);
 
-        Image companyLogo = new Image("file:///C:\\Users\\User\\Desktop\\logo.png");
-//        Image companyLogo = new Image("https://photos.app.goo.gl/DFBTzFD9DDsfxemcA");
+        Image companyLogo = new Image("https://lh3.googleusercontent.com/h_u-4kA9-jNC7vcCZHPKyiyvuV4X9GVCM4YVJGj6b2x5t1rkNjnL-7CMxqc52om7dgalaXsqVhIODLPFfc52JfYGOWlsrFTR5JfhJj5jm0PF3cuonFSkpYKiqhaTQC8vgyVEZIBoGRkGgtZKuQ4GMyEzC6koLTxgyLLq51WFlNN-S7trAMD-DDjTbV2iTQ83xAXebXU21fiVrIpxGjpHNBzoHofn2wz0TLD1JOVI88Iub81c-KOUiT3jmvBes4MBs28Ee451sMQ2Hd3ytXPooihK9KFEvQjnrguzmygIMpHW2nflD1GMHsLbt8tZsW5zBpjohnpTCIvYC0K-YbRAc2SHz6gZARFFPsGZM0Mu8W1lhVbgGO5qdHmCMefTqC9sRciHBJYYzGpWEzP-hUEG-33KvfOusnjzUnWJbpLQsLD79_So1BoiH572kgdJg7IRI9w78o3O4jAmmk1EckSqELnhCsGLifZSVHWK8oyyE226mxe0sEeFWcKNO_FRy7RD-JfYT7C8l-GGECfe0arTkk1yu0vjqVDv2u707XMSDdeSeS4qo_YFDzKmHRfRlFfAXieQ1faQevD-CbYpZR9Ll07HHwLjfgTd4KwUYEjkL7YFNxWgPHqoAYtCrL8lhT8rxo5CQ3OthBUt3QfCB6sj76Q3OgoSql15GF6cau6gfNHIyhDWBS1BKDYkUyS1dsE_tkR3bbBlt6a7IfMd0ekmJElpV3eGwm-TyA7lkoy9Rko_y0pE=w1000-h232-no");
         homScreenLogoPane.getChildren().addAll(new ImageView(companyLogo));
 
         //Creating all custom labels and setting font size

@@ -63,6 +63,7 @@ public class DropdownButtons {
         createMenuItem.setContent(createCustomer);
         createMenuItem.setHideOnClick(true);
         createDropdownMenu.getItems().add(createMenuItem);
+        createCustomer.setPrefWidth(150);
         createCustomer.setOnAction(event -> {
             Customer customer = customerService.createCustomer();
             Display.showDisplay(CreateCustomerScreenLayout.CreateCustomerScreen(customer));
@@ -73,6 +74,7 @@ public class DropdownButtons {
         createMenuItem2.setContent(createEventsButton);
         createMenuItem2.setHideOnClick(true);
         createDropdownMenu.getItems().add(createMenuItem2);
+        createEventsButton.setPrefWidth(150);
         createEventsButton.setOnAction(event -> {
             Event visitEvent = eventService.createEvent();
             Display.showDisplay(CreateEventScreenLayout.CreateEventScreen(visitEvent));
