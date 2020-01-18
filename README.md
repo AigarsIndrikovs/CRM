@@ -12,6 +12,14 @@ Import MySQL Database schema from
 ```
 CRM/MySQL Schema/CRM DatabaseSchema.sql
 ```
+To Connect to database you need to change LOGIN and PASSWORD for your database in 
+> src/Main/java/hibernate/utility/DBConfig.java
+```
+                settings.put(Environment.USER, "LOGIN");
+                settings.put(Environment.PASS, "PASSWORD");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+```
 
 ### Prerequisites
 
