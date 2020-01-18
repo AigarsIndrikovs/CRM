@@ -70,10 +70,10 @@ public class CustomersScreenLayout {
         columnId.setPrefWidth(40);
         columnName.setPrefWidth(110);
         columnRegistrationNumber.setPrefWidth(110);
-        columnPhone.setPrefWidth(110);
-        columnEmail.setPrefWidth(110);
+        columnPhone.setPrefWidth(120);
+        columnEmail.setPrefWidth(130);
         columnWebPage.setPrefWidth(110);
-        columnContactPerson.setPrefWidth(110);
+        columnContactPerson.setPrefWidth(130);
         editButton.setPrefWidth(80);
         deleteButton.setPrefWidth(80);
         columnAddress.prefWidthProperty().bind(
