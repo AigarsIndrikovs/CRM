@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: crm
 -- ------------------------------------------------------
--- Server version	8.0.17
+-- Server version	8.0.18
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,8 +31,9 @@ CREATE TABLE `customers` (
   `email` varchar(60) DEFAULT NULL,
   `WebPage` varchar(45) DEFAULT NULL,
   `ContactPerson` varchar(100) DEFAULT NULL,
+  `numberInList` int(11) DEFAULT '0',
   PRIMARY KEY (`customerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'LVPARTS SIA','Dārzciema iela 60, Rīga','40203099262','+371 26159734','aigars@lvparts.lv','lvparts.lv','Aigars Indrikovs'),(2,'Volvo Truck Latvia','Granīta iela, Rumbula','40203366982','+371 26589741','valdis@volvo.com','volvo.lv','Valdis Valainis'),(3,'Anytec Productions SIA','Flotes iela 2a, Rīga','6564862662','+371 61597548','aleksej@anytec.lv','anytec.eu','Aleksejs Larionovs'),(5,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customers` VALUES (1,'LVPARTS SIA','Dārzciema iela 60, Rīga','40203099262','+371 26159734','aigars@lvparts.lv','lvparts.lv','Aigars Indrikovs',NULL),(2,'Volvo Truck Latvia','Granīta iela, Rumbula','40203366982','+371 26589741','valdis@volvo.com','volvo.lv','Valdis Valainis',NULL),(3,'Anytec Productions SIA','Flotes iela 2a, Rīga','6564862662','+371 61597548','aleksej@anytec.lv','anytec.eu','Aleksejs Larionovs',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,6 +61,7 @@ CREATE TABLE `events` (
   `ContactPerson` varchar(45) DEFAULT NULL,
   `Description` varchar(250) DEFAULT NULL,
   `Result` varchar(250) DEFAULT NULL,
+  `eventNumber` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`eventId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,7 +72,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,1,'TestName','2019-12-28','CEO and marketing manager','Discussed pricing and marketing support. Customer need additional catalogues and leaflets','Agreed to start cooperation'),(3,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL),(5,NULL,'23123','12123123','2133123','12312331231123','123123'),(6,NULL,NULL,NULL,NULL,NULL,NULL),(7,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `events` VALUES (1,1,'Skandi Motors','2019-12-28','CEO and marketing manager','Discussed pricing and marketing support. Customer need additional catalogues and leaflets','Agreed to start cooperation',NULL),(7,NULL,'Anytec','16.01.2020','Oleg Kronberg','Discussed Marine lighting product range. \nAt the moment using meduim quality lights from several suppliers.\n','Need to prepare offer for all available lights.',NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,8 +87,9 @@ CREATE TABLE `tasks` (
   `tasksId` int(11) NOT NULL AUTO_INCREMENT,
   `taskDescription` varchar(100) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
+  `taskNumber` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tasksId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +98,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'dfkdkkdkdkdkdkd',1),(2,'dsfdsfsdf',0),(3,'',1),(4,'asda',0);
+INSERT INTO `tasks` VALUES (9,'Send warning price offer to Unimotors',0,NULL),(11,'ASAP Dometic delivery for boat builder',1,NULL),(12,'New task',1,NULL),(21,'JUnit test',1,NULL),(22,'Jauns uzdevums',1,NULL);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +111,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-18  9:41:20
+-- Dump completed on 2020-01-18 13:10:05

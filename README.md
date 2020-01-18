@@ -26,15 +26,23 @@ MySQL workbench
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Tests are made for TaskService class;
+To check getTaskById in check box need to be real text from DB with this id
+No special requirements for other tests
+
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+Tests check are the TaskService methods is working and made needed actions in DB.
 
-```
-Give an example
-```
+ @Test
+    void addTask() {
+        int taskCountBefore = taskList.size();
+        taskService.addTaskForTest("JUnit test");
+        taskList = taskService.getSortedTask(true);
+        taskList.size();
+        assertEquals(taskList.size(),taskCountBefore + 1 );
+    }
 
 ## Built With
 
