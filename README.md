@@ -5,17 +5,18 @@ Simple CRM application that is designed to work on your local machine with local
 ## Getting Started
 
 To run this application you need to import it to your IDE from github
--import Maven
--SetUp JDK1.8.0_221 project
--Import MySQL Database schema from 
+
+import Maven
+SetUp JDK1.8.0_221 project
+Import MySQL Database schema from 
 ```
 CRM/MySQL Schema/CRM DatabaseSchema.sql
 ```
 
 ### Prerequisites
 
--IntelliJ
--MySQL workbench
+IntelliJ
+MySQL workbench
 
 ```
 Give examples
@@ -65,7 +66,8 @@ Give an example
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Aigairs Indrikovs** - *Project Lead* - (https://github.com/AigarsIndrikovs)
+* **Peteris Zevalds** - (https://github.com/PeterisZevalds)
 
 ## Known issues
 
