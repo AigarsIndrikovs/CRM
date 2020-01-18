@@ -17,15 +17,11 @@ public class DBConfig {
             try {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
-//                settings.put(Environment.DRIVER, "coms.mysql.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/crm?serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "Java2019");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-//                settings.put(Environment.HBM2DDL_AUTO, "create_drop");
-
-
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(hibernate.entities.Customer.class);
