@@ -82,6 +82,12 @@ public class EventScreenLayout {
                         .subtract(20) //Border values
         );
 
+        //Setting size of TableView of table
+        eventTableView.prefHeightProperty().bind(
+                mainLayout.heightProperty()
+                        .subtract(20) //Border values
+        );
+
         eventTableView.getColumns().addAll(columnId, columnCustomer, columnDate, columnContactPerson, columnEventDescription, columnEventResult, editButton, deleteButton);
         eventTableView.getItems().addAll(allEvents);
         mainLayout.getChildren().addAll(screen, eventTableView);

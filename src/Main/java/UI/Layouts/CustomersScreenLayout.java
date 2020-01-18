@@ -90,6 +90,12 @@ public class CustomersScreenLayout {
                         .subtract(20) //Border values
         );
 
+        //Setting size of TableView for table
+        customerTableView.prefHeightProperty().bind(
+                mainLayout.heightProperty()
+                        .subtract(20) //Border values
+        );
+
 
         customerTableView.getColumns().addAll(columnId, columnName, columnAddress, columnRegistrationNumber, columnPhone, columnEmail, columnWebPage, columnContactPerson, editButton, deleteButton);
         customerTableView.getItems().addAll(allCustomers);
