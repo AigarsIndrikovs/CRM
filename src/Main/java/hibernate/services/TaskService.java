@@ -23,8 +23,8 @@ public class TaskService {
             session.save(task);
             transaction.commit();
             session.close();
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -72,6 +72,22 @@ public class TaskService {
             Task task = getTaskById(id);
             task.setStatus(status);
             session.update(task);
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addTaskForTest(String name) {
+        Transaction transaction = null;
+        try {
+            Session session = DBConfig.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Task task = new Task();
+            task.setTaskDescription(name);
+            task.setStatus(true);
+            session.save(task);
             transaction.commit();
             session.close();
         } catch (Exception e) {
